@@ -19,25 +19,37 @@ typedef struct _MyStudentPrivate MyStudentPrivate;
 
 struct _MyStudent
 {
-   GObject parent;
+	GObject parent;
 
-   /*< private >*/
-   MyStudentPrivate *priv;
+	/*< private >*/
+	MyStudentPrivate *priv;
 };
 
 struct _MyStudentClass
 {
-   GObjectClass parent_class;
+	GObjectClass parent_class;
 };
 
-MyStudent   *my_student_new       (void);
-GType        my_student_get_type  (void) G_GNUC_CONST;
-const gchar *my_student_get_goals (MyStudent  *student);
-void         my_student_set_goals (MyStudent  *student,
-                                   const char *goals);
-const gchar *my_student_get_name  (MyStudent  *student);
-void         my_student_set_name  (MyStudent  *student,
-                                   const char *name);
+MyStudent   *my_student_new            (void);
+guint        my_student_get_chapter    (MyStudent   *student);
+const gchar *my_student_get_experience (MyStudent   *student);
+const gchar *my_student_get_first_name (MyStudent   *student);
+const gchar *my_student_get_goals      (MyStudent   *student);
+const gchar *my_student_get_last_name  (MyStudent   *student);
+GTimeZone   *my_student_get_timezone   (MyStudent   *student);
+GType        my_student_get_type       (void) G_GNUC_CONST;
+void         my_student_set_chapter    (MyStudent   *student,
+                                        guint        chapter);
+void         my_student_set_experience (MyStudent   *student,
+                                        const gchar *experience);
+void         my_student_set_first_name (MyStudent   *student,
+                                        const gchar *first_name);
+void         my_student_set_goals      (MyStudent   *student,
+                                        const gchar *goals);
+void         my_student_set_last_name  (MyStudent   *student,
+                                        const gchar *last_name);
+void         my_student_set_timezone   (MyStudent   *student,
+                                        GTimeZone   *timezone);
 
 G_END_DECLS
 
