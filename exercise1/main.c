@@ -4,13 +4,13 @@ gint
 main (gint   argc,
 	  gchar *argv[])
 {
-	MyStudent *student;
-	GTimeZone *timezone;
+	g_autoptr(MyStudent) student;
+	g_autoptr(GTimeZone) timezone;
 	guint chapter;
-	gchar *experience;
-	gchar *first_name;
-	gchar *goals;
-	gchar *last_name;
+	g_autofree gchar *experience;
+	g_autofree gchar *first_name;
+	g_autofree gchar *goals;
+	g_autofree gchar *last_name;
 
 	timezone = g_time_zone_new ("-0700");
 	student = g_object_new (MY_TYPE_STUDENT,
@@ -21,7 +21,6 @@ main (gint   argc,
 	                        "last-name", "Hergert",
 	                        "timezone", timezone,
 	                        NULL);
-	g_time_zone_unref (timezone);
 
 	g_object_get (student,
 	              "chapter", &chapter,
@@ -47,12 +46,6 @@ main (gint   argc,
 			 g_time_zone_get_offset (timezone, 0),
 			 experience);
 
-	g_free (experience);
-	g_free (first_name);
-	g_free (goals);
-	g_free (last_name);
-	g_time_zone_unref (timezone);
-
 	g_print ("Using strings directly...\n"
 	         "\n"
 	         "      Name: %s %s\n"
@@ -67,8 +60,6 @@ main (gint   argc,
 			 my_student_get_goals (student),
 			 g_time_zone_get_offset (my_student_get_timezone (student), 0),
 			 my_student_get_experience (student));
-
-	g_object_unref (student);
 
 	return 0;
 }
