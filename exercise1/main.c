@@ -4,13 +4,13 @@ gint
 main (gint   argc,
 	  gchar *argv[])
 {
-	g_autoptr(MyStudent) student;
-	g_autoptr(GTimeZone) timezone;
+	g_autoptr(MyStudent) student = NULL;
+	g_autoptr(GTimeZone) timezone = NULL;;
 	guint chapter;
-	g_autofree gchar *experience;
-	g_autofree gchar *first_name;
-	g_autofree gchar *goals;
-	g_autofree gchar *last_name;
+	g_autofree gchar *experience = NULL;;
+	g_autofree gchar *first_name = NULL;
+	g_autofree gchar *goals = NULL;
+	g_autofree gchar *last_name = NULL;
 
 	timezone = g_time_zone_new ("-0700");
 	student = g_object_new (MY_TYPE_STUDENT,
