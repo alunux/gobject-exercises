@@ -12,8 +12,6 @@ main (gint   argc,
 	gchar *goals;
 	gchar *last_name;
 
-	g_type_init ();
-
 	timezone = g_time_zone_new ("-0700");
 	student = g_object_new (MY_TYPE_STUDENT,
 							"chapter", 1,
